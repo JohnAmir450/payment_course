@@ -32,6 +32,8 @@ class _CustomCreditCardState extends State<CustomCreditCard> {
           cardHolderValidator: (value) {
             if(value!.isEmpty){
               return 'Please Input The Holder Name';
+            }else{
+              return null;
             }
           },
           autovalidateMode: widget.autovalidateMode,
