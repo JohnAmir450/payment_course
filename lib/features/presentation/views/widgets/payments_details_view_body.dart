@@ -12,20 +12,31 @@ class PaymentDetailsBody extends StatefulWidget {
 
 class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
  GlobalKey<FormState>formKey=GlobalKey();
+ AutovalidateMode autovalidateMode=AutovalidateMode.disabled;
 
   @override
   Widget build(BuildContext context) {
     return  CustomScrollView(
       slivers: [
         const SliverToBoxAdapter(child: PaymentMethodsListView(),),
-        SliverToBoxAdapter(child: CustomCreditCard(formKey: formKey,),),
-        const SliverFillRemaining(
+        SliverToBoxAdapter(child: CustomCreditCard(formKey: formKey,autovalidateMode: autovalidateMode,),),
+         SliverFillRemaining(
           hasScrollBody: false,
           child: Align(
           alignment: Alignment.center,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0,vertical: 16),
-            child: CustomButton(title: 'Complete Payment'),
+            padding:const EdgeInsets.symmetric(horizontal: 16.0,vertical: 16),
+            child: CustomButton(title: 'Pay',onTap: (){
+              if(formKey.currentState!.validate()){
+                formKey.currentState!.save();
+              }else{
+                 autovalidateMode=AutovalidateMode.always;
+                 setState(() {
+                   
+                 });
+              }
+
+            },),
           )),)
       ],
     );
