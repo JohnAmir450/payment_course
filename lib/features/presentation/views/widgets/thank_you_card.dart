@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:payment_gateway/core/utils/app_styles.dart';
 import 'package:payment_gateway/features/presentation/views/widgets/card_info_widget.dart';
 import 'package:payment_gateway/features/presentation/views/widgets/payment_info_item.dart';
 import 'package:payment_gateway/features/presentation/views/widgets/total_price.dart';
-
 
 class ThankYouCard extends StatelessWidget {
   const ThankYouCard({
@@ -52,13 +53,33 @@ class ThankYouCard extends StatelessWidget {
               height: 20,
             ),
             const TotalPrice(title: 'Total', value: '\$50.97'),
-            const CardInfoWidget()
+            const CardInfoWidget(),
+            const Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Icon(
+                  FontAwesomeIcons.barcode,
+                  size: 40,
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 44,vertical: 20),
+                  decoration: ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(color: Color(0xff34A853)),
+                      borderRadius: BorderRadiusDirectional.circular(15),
+                    ),
+                  
+                  ),child: Text('PAID',style: AppStyles.textStyle24.copyWith(color: const Color(0xff34A853)),),
+                ),
+                
+              ],
+              
+            ),const SizedBox(height: 50,)
           ],
+          
         ),
       ),
     );
   }
 }
-
-
-

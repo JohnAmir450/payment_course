@@ -12,12 +12,15 @@ class CustomCheckItem extends StatelessWidget {
         right: 0,
         top: -50,
         child: CircleAvatar(
-          radius: 50,
-          backgroundColor: Colors.green,
-          child: Icon(
-            Icons.check,
-            size: 50,
-            color: Color(0xffD9D9D9),
+          radius: 60,backgroundColor: Color(0xffD9D9D9),
+          child: CircleAvatar(
+            radius: 50,
+            backgroundColor: Colors.green,
+            child: Icon(
+              Icons.check,
+              size: 50,
+              color: Color(0xffD9D9D9),
+            ),
           ),
         ));
   }
