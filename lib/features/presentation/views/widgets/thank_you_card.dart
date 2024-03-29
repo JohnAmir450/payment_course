@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:payment_gateway/core/utils/app_styles.dart';
+import 'package:payment_gateway/features/presentation/views/widgets/card_info_widget.dart';
+import 'package:payment_gateway/features/presentation/views/widgets/payment_info_item.dart';
+import 'package:payment_gateway/features/presentation/views/widgets/total_price.dart';
+
 
 class ThankYouCard extends StatelessWidget {
   const ThankYouCard({
@@ -17,7 +21,7 @@ class ThankYouCard extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(top: 70,left: 4,right: 4),
+        padding: const EdgeInsets.only(top: 70, left: 4, right: 4),
         child: Column(
           children: [
             Text(
@@ -31,9 +35,24 @@ class ThankYouCard extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            const PaymentInfoItem(title:'Date' ,value:'01/24/2023' ,),
-            const PaymentInfoItem(title:'Time' ,value:'10:15 AM' ,),
-            const PaymentInfoItem(title:'To' ,value:'Sam Louis' ,),
+            const PaymentInfoItem(
+              title: 'Date',
+              value: '01/24/2023',
+            ),
+            const PaymentInfoItem(
+              title: 'Time',
+              value: '10:15 AM',
+            ),
+            const PaymentInfoItem(
+              title: 'To',
+              value: 'Sam Louis',
+            ),
+            const Divider(
+              thickness: 2,
+              height: 20,
+            ),
+            const TotalPrice(title: 'Total', value: '\$50.97'),
+            const CardInfoWidget()
           ],
         ),
       ),
@@ -41,23 +60,5 @@ class ThankYouCard extends StatelessWidget {
   }
 }
 
-class PaymentInfoItem extends StatelessWidget {
-  const PaymentInfoItem({super.key, required this.title, required this.value});
-  final String title, value;
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-         title ,
-          style: AppStyles.textStyle18,
-        ),
-        Text(
-         value ,
-          style: AppStyles.textStyle18,
-        ),
-      ],
-    );
-  }
-}
+
+
