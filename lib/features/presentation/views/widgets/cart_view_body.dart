@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:payment_gateway/core/widgets/custom_button.dart';
 import 'package:payment_gateway/features/presentation/views/payment_details.dart';
 import 'package:payment_gateway/features/presentation/views/widgets/order_info_item.dart';
+import 'package:payment_gateway/features/presentation/views/widgets/payment_method_list_view.dart';
 import 'package:payment_gateway/features/presentation/views/widgets/total_price.dart';
 
 class CartViewBody extends StatelessWidget {
@@ -57,12 +58,17 @@ class CartViewBody extends StatelessWidget {
               height: 16,
             ),
             CustomButton(
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) =>const PaymentDetails(),
-                  ),
-                );
+              // onTap: () {
+              //   Navigator.of(context).push(
+              //     MaterialPageRoute(
+              //       builder: (context) =>const PaymentDetails(),
+              //     ),
+              //   );
+              // },
+              onTap: (){
+                showModalBottomSheet(context: context, builder: (context){
+                    return const PaymentMethodsBottomSheet();
+                });
               },
               title: 'Complete Payment',
             ),
@@ -72,6 +78,24 @@ class CartViewBody extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+class PaymentMethodsBottomSheet extends StatelessWidget {
+  const PaymentMethodsBottomSheet({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(height: 16,),
+        PaymentMethodsListView(),
+        SizedBox(height: 32,),
+        CustomButton(title: 'Pay')
+      ],),
     );
   }
 }
